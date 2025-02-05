@@ -1,0 +1,21 @@
+The solution involves updating the AGP version in the `android/build.gradle` file to a version that's compatible with both Expo and your project's dependencies.  Refer to Expo's documentation and the AGP release notes for compatible versions.
+
+Here's an example of how to correct the `build.gradle` file:
+
+```gradle
+buildscript {
+    ext.kotlin_version = "1.8.22"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.1.0") // Updated AGP version
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+}
+
+// ... rest of the build.gradle file
+```
+
+Make sure to clean and rebuild your project after making changes to the `build.gradle` file.  Use the commands `expo prebuild` and then `expo run:android`.
